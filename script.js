@@ -4,6 +4,7 @@ function Tictactoe() {
   this.clear = document.getElementById('reset');
   this.boxes = document.getElementsByClassName('item');
   this.boxClicked = document.getElementById('container');
+  this.status = document.getElementById("message");
   this.addEventListeners();
   this.moves = 0;
 }
@@ -35,6 +36,8 @@ Tictactoe.prototype.clearBoard = function () {
     this.moves = 0;
   this.setNextTurn();
   this.resetColor('black');
+  this.status.className -= 'new-message';
+  this.status.textContent = '';
   this.boxClicked.className -= 'container-no-click';
 }
 
@@ -82,20 +85,25 @@ Tictactoe.prototype.diagonalWin = function (arr) {
       (arr[2] === arr[4] && arr[2] === arr[6] && arr[2] !== null)
 }
 
+Tictactoe.prototype.statusMessage = function (message) {
+  this.status.classList.add('new-message', 'fadeInUp');
+  this.status.textContent = message;
+}
+
 Tictactoe.prototype.checkWin = function () {
   if (
     this.rowWin(this.letters) ||
     this.columnWin(this.letters) ||
     this.diagonalWin(this.letters)
   ) {
-    console.log("Winner!");
+    this.statusMessage('Winner!');
     this.boxClicked.classList.add("container-no-click");
     return;
   } else if (
     ((!this.rowWin(this.letters)) || !this.columnWin(this.letters) || !this.diagonalWin(this.letters)) &&
     this.moves === 9
   ) {
-    console.log("It is a tie!");
+    this.statusMessage("It is a tie!");
     return;
   }
   return;
