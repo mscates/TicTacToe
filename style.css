@@ -34,3 +34,43 @@
   width: 200px;
   animation-duration: 1s;
 }
+
+
+@media (min-width: 320px) {
+  h1 {
+    text-align: center;
+  }
+
+  #container {
+    display: inline-grid;
+    grid-template-columns: 80px 80px 80px;
+    grid-template-rows: 80px 80px 80px;
+    grid-gap: 10px;
+  }
+}
+
+@media (min-width: 500px) {
+  h1 {
+    text-align: center;
+  }
+
+  #container {
+    display: inline-grid;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+    grid-gap: 10px;
+  }
+}
+
+@media (min-width: 1000px) {
+  h1 {
+    text-align: center;
+  }
+
+  #container {
+    display: inline-grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px;
+    grid-gap: 10px;
+  }
+}
